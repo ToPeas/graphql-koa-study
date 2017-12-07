@@ -17,9 +17,9 @@ const router = new koaRouter()
 const PORT = 3003
 
 const buildOptions = async ctx => {
-  const user = await authenticate(ctx, buildDataloaders(mongo))
+  // const user = await authenticate(ctx, buildDataloaders(mongo))
   return {
-    context: { mongo, user, dataloaders: buildDataloaders(mongo) },
+    context: { mongo, dataloaders: buildDataloaders(mongo), ctx },
     schema,
     formatError,
     debug: false
@@ -32,8 +32,8 @@ router.post("/graphql", koaBody(), graphqlKoa(buildOptions))
 router.get(
   "/graphiql",
   graphiqlKoa({
-    endpointURL: "/graphql",
-    passHeader: `'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5YzEyZTdkZTA4NTMxNDcwNDQ4NDQ0MyIsImlhdCI6MTUwNTg3NzgzN30.F_wd_uh3C7nhJq0nsw58htZWg9SbA9U2AsQtQIEU7bI'`
+    endpointURL: "/graphql"
+    // passHeader: `'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5YzEyZTdkZTA4NTMxNDcwNDQ4NDQ0MyIsImlhdCI6MTUwNTg3NzgzN30.F_wd_uh3C7nhJq0nsw58htZWg9SbA9U2AsQtQIEU7bI'`
   })
 )
 

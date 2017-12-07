@@ -8,15 +8,18 @@ const productMocks = [
 exports.resolver = {
   Query: {
     products(root, { id }, context) {
-      console.log("root", root)
-      console.log("context", context)
       const results = id ? productMocks.filter(p => p.id == id) : productMocks
       if (results) return results
       else throw httpError(404, `Product with id ${id} does not exist.`)
     }
+  },
+  Mutation: {
+    addProduct(root, product, context) {
+      // const product = {}
+      // console.log(context)
+      // console.log(product)
+      productMocks.push(product)
+      return product
+    }
   }
-
-  // Add Mutation or Subscription here as well:
-  // Mutation: { ... }
-  // Subscription: { ... }
 }
