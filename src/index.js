@@ -40,9 +40,7 @@ router.get(
 app.use(router.routes())
 app.use(router.allowedMethods())
 app.listen(PORT, () => {
-  console.log(
-    `Server is running. Test server on http://localhost:${PORT}/graphiql .`
-  )
+  console.log(`服务已启动. graphiql => http://localhost:${PORT}/graphiql .`)
 })
 
 /*

@@ -2,7 +2,9 @@ exports.schema = `
 type Variant {
   id: ID!
   name: String!
+  product:[Product]
   shortDescription: String
+
 }
 `
 // Notice that we have omitted to wrap the above with 'type Query { }'

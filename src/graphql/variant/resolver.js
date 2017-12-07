@@ -1,9 +1,12 @@
 // src/graphql/variant/resolver.js
-
 const httpError = require("http-errors")
 
 const variantMocks = [
-  { id: 1, name: "Variant A", shortDescription: "First variant." },
+  {
+    id: 1,
+    name: "Variant A",
+    shortDescription: "First variant."
+  },
   { id: 2, name: "Variant B", shortDescription: "Second variant." }
 ]
 
@@ -15,8 +18,4 @@ exports.resolver = {
       else throw httpError(404, `Variant with id ${id} does not exist.`)
     }
   }
-
-  // Add Mutation or Subscription here as well:
-  // Mutation: { ... }
-  // Subscription: { ... }
 }
