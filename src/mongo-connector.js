@@ -1,18 +1,19 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose")
 const Schema = mongoose.Schema
-const MONGO_URL = 'mongodb://localhost:27017/hackernews'
+const MONGO_URL = "mongodb://localhost:27017/hackernews"
 const Logger = mongoose.mongo.Logger
 
 let logCount = 0
 Logger.setCurrentLogger((msg, state) => {
   console.log(`MONGO DB REQUEST No. ${++logCount}`)
 })
-Logger.setLevel('debug')
-Logger.filter('class', ['Cursor'])
+Logger.setLevel("debug")
+Logger.filter("class", ["Cursor"])
 
 const linkSchema = new Schema({
   url: String,
   description: String,
+  name: String,
   postedById: Schema.Types.ObjectId
 })
 
@@ -32,7 +33,7 @@ const VoteSchema = new Schema({
 })
 
 module.exports = {
-  Links: mongoose.model('Links', linkSchema),
-  Users: mongoose.model('Users', userSchema),
-  Votes: mongoose.model('Votes', VoteSchema)
+  Links: mongoose.model("Links", linkSchema),
+  Users: mongoose.model("Users", userSchema),
+  Votes: mongoose.model("Votes", VoteSchema)
 }
