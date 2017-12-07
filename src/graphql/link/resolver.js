@@ -4,7 +4,11 @@ const httpError = require("http-errors")
 exports.resolver = {
   Mutation: {
     addLink: async (root, data, { mongo: { Links }, user }) => {
-      return await Links.create(data)
+      if (!user) {
+        throw new httpError(401, `请先登录`)
+      } else {
+        return await Links.create(data)
+      }
     }
   },
   Link: {

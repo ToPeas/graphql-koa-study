@@ -13,5 +13,5 @@ exports.query = `
 `
 
 exports.mutation = `
-  addLink(id:Int, name:String,url:String,description:String):Link
+  addLink(name:String,url:String,description:String):Link
 `

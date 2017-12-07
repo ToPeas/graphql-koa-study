@@ -23,8 +23,24 @@ mongoose.connect(MONGO_URL, { useMongoClient: true })
 // module.exports = mongoose.model('Links', linkSchema)
 
 const userSchema = new Schema({
-  name: String,
-  password: String
+  id: {
+    type: Schema.Types.ObjectId
+  },
+  username: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  CreateTime: { type: Date, default: Date.now },
+  lastLoginTime: { type: Date, default: Date.now },
+  role: {
+    type: String,
+    enum: ["admin", "vistor"],
+    default: "vistor"
+  }
 })
 
 const VoteSchema = new Schema({

@@ -5,7 +5,9 @@ const koaBody = require("koa-bodyparser")
 const { graphqlKoa, graphiqlKoa } = require("apollo-server-koa")
 const schema = require("./schema")
 const { execute, subscribe } = require("graphql")
-const { createServer } = require("http")
+// const {
+//   createServer
+// } = require("http")
 const { SubscriptionServer } = require("subscriptions-transport-ws")
 const { authenticate } = require("./authentication")
 const mongo = require("./mongo-connector")
@@ -17,9 +19,14 @@ const router = new koaRouter()
 const PORT = 3003
 
 const buildOptions = async ctx => {
-  // const user = await authenticate(ctx, buildDataloaders(mongo))
+  const user = await authenticate(ctx, mongo)
   return {
-    context: { mongo, dataloaders: buildDataloaders(mongo), ctx },
+    context: {
+      mongo,
+      // dataloaders: buildDataloaders(mongo),
+      ctx,
+      user
+    },
     schema,
     formatError,
     debug: false
