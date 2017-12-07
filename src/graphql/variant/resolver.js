@@ -10,6 +10,11 @@ const variantMocks = [
   { id: 2, name: "Variant B", shortDescription: "Second variant." }
 ]
 
+const productMocks = [
+  { id: 1, name: "Product A", shortDescription: "First product.", postBy: 1 },
+  { id: 2, name: "Product B", shortDescription: "Second product.", postBy: 2 }
+]
+
 exports.resolver = {
   Query: {
     variants(root, { id }, context) {
