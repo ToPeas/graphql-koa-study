@@ -9,11 +9,14 @@
     "graphql": "0.11.7",
     "graphql-subscriptions": "^0.5.4",
     "graphql-tools": "^2.6.1",
+    "http-errors": "^1.6.2",
     "jsonwebtoken": "^8.1.0",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
     "koa-router": "^7.2.1",
+    "lodash": "^4.17.4",
     "mongoose": "^4.12.4",
+    "schemaglue": "^1.5.1",
     "subscriptions-transport-ws": "^0.9.1"
   },
   "scripts": {
